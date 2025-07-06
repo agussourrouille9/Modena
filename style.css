@@ -1,21 +1,23 @@
 body {
-  background-color: #6c7075; /* gris oscuro */
+  background-color: #f4f4f5;
+  color: #1f1f1f;
+  font-family: 'Helvetica Neue', sans-serif;
   scroll-behavior: smooth;
 }
 
 .bloque {
-  background-color: #f5f5f5; /* gris claro */
+  background-color: #ffffff; 
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;  
 }
 
-/* ejemplo: achicar el texto del resultado */
-#resultado p {
-  margin-bottom: 4px;
+.boton-primario {
+  background-color: #4b5563;
+  color: white;
+  transition: background-color 0.2s ease;
 }
 
-/* podés hacer ajustes por clase también si querés separarlo de Tailwind */
-.resultado-label {
-  font-weight: bold;
-  color: #333;
+.boton-primario:hover {
+  background-color: #374151;
 }
