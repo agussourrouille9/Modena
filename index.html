@@ -34,7 +34,8 @@
       }
 
       try {
-        const response = await fetch(`https://script.google.com/macros/s/AKfycbx766CUdCru7UlvpLeeC2pm-0hlldiBFY2Ue_RpEGsr12ww957WU5Bc0JaVk5-AfYXB4g/exec?patente=LHS066`);
+        const patente = document.getElementById("patenteInput").value.trim().toUpperCase();
+        const response = await fetch(`https://script.google.com/macros/s/AKfycbx766CUdCru7UlvpLeeC2pm-0hlldiBFY2Ue_RpEGsr12ww957WU5Bc0JaVk5-AfYXB4g/exec?patente=${patente}`);
         const data = await response.json();
 
         if (data.error) {
