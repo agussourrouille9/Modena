@@ -28,11 +28,12 @@ async function buscarPatente() {
           resultadoDiv.innerHTML = "<p class='text-red-500'>No se encontró la patente.</p>";
         } else {
           let html = `
+            <p><strong>Ultimo service:</strong> ${data.fechaUltimoService}</p>
+            <p><strong>Patente:</strong> ${data.patente}</p>
             <p><strong>Marca:</strong> ${data.marca}</p>
             <p><strong>Modelo:</strong> ${data.modelo}</p>
             <p><strong>Kilometraje:</strong> ${data.km}</p>
             <p><strong>Lubricante:</strong> ${data.lubricante}</p>
-            <p><strong>Próximo service:</strong> ${data.proximoService}</p>
           `;
 
           // Mostrar lista de cambios si hay
@@ -49,6 +50,9 @@ async function buscarPatente() {
             html += `<p><strong>Observaciones:</strong> ${data.observaciones}</p>`;
           }
 
+          // Mostrar prox service
+          html += `<p><strong>Próximo service:</strong> ${data.proximoService}</p>`;
+          
           resultadoDiv.innerHTML = html;
         } 
       } catch (error) {
