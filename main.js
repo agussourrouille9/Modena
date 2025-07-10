@@ -27,16 +27,30 @@ async function buscarPatente() {
         if (data.error) {
           resultadoDiv.innerHTML = "<p class='text-red-500'>No se encontró la patente.</p>";
         } else {
-          resultadoDiv.innerHTML = `
+          let html = `
             <p><strong>Marca:</strong> ${data.marca}</p>
             <p><strong>Modelo:</strong> ${data.modelo}</p>
             <p><strong>Kilometraje:</strong> ${data.km}</p>
             <p><strong>Lubricante:</strong> ${data.lubricante}</p>
             <p><strong>Próximo service:</strong> ${data.proximoService}</p>
-            <p><strong>Cambios:</strong> ${data.cambios}</p>
-            <p><strong>Observaciones:</strong> ${data.observaciones}</p>
           `;
-        }
+
+          // Mostrar lista de cambios si hay
+          if (Array.isArray(data.cambios) && data.cambios.length > 0) {
+            html += `<p><strong>Cambios:</strong></p><ul class="list-disc list-inside">`;
+            data.cambios.forEach(cambio => {
+              html += `<li>${cambio}</li>`;
+            });
+            html += `</ul>`;
+          }
+
+          // Mostrar observaciones solo si existen
+          if (data.observaciones) {
+            html += `<p><strong>Observaciones:</strong> ${data.observaciones}</p>`;
+          }
+
+          resultadoDiv.innerHTML = html;
+        } 
       } catch (error) {
         resultadoDiv.innerHTML = "<p class='text-red-500'>Hubo un error en la consulta.</p>";
         console.error(error);
