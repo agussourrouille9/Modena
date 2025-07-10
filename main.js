@@ -47,12 +47,17 @@ async function buscarPatente() {
 
           // Mostrar observaciones solo si existen
           if (data.observaciones) {
-            html += `<p><strong>Observaciones:</strong> ${data.observaciones}</p>`;
+            const observacionesArray = data.observaciones.split(" | ");
+            html += `<p><strong>Observaciones:</strong></p><ul class="list-disc list-inside">`;
+            observacionesArray.forEach(obs => {
+              html += `<li>${obs}</li>`;
+            });
+            html += `</ul>`;
           }
 
           // Mostrar prox service
           html += `<p><strong>Próximo service:</strong> ${data.proximoService}</p>`;
-          
+
           resultadoDiv.innerHTML = html;
         } 
       } catch (error) {
